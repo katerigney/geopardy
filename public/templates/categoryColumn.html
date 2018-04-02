@@ -1,19 +1,9 @@
 <section class="jeopardyBoardBox">
-    <h3>{{categoryTitle}}</h3>
+    <h3>{{cat.title}}</h3>
 </section>
-<section class="jeopardyBoardBox">
-    <button ng-click="getQuestion(category[0])">{{category[0].value}}</button>
-    <h3 ng-show="showQuestion">{{category[0].question}}</h3>
-</section>
-<section class="jeopardyBoardBox">
-    <button ng-click="getQuestion(category[1])">{{category[1].value}}</button>
-    <h3 ng-show="showClue">{{category[1].question}}</h3>
-</section>
-<section class="jeopardyBoardBox">
-    <button ng-click="getQuestion(category[2])">{{category[2].value}}</button>
-    <h3 ng-show="showClue">{{category[2].question}}</h3>
-</section>
-<section class="jeopardyBoardBox">
-    <button ng-click="getQuestion(category[3])">{{category[3].value}}</button>
-    <h3 ng-show="showClue">{{category[3].question}}</h3>
+
+
+<section class="jeopardyBoardBox" ng-repeat="clue in cat.clues">
+    <button ng-click="getQuestion(category[0])">{{clue.value}}</button>
+    <h3 ng-show="showQuestion">{{clue.question}}</h3>
 </section>

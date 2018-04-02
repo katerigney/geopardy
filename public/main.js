@@ -9,6 +9,12 @@ const generateRandomCategoryNumber = () => {
 return randomNum
 }
 
+const createCategory = (data) => {
+  return {
+    title :data.title,
+    clues: data.clues.slice(0,5)
+  }
+}
 
 
 //use that random number to call a jeopardy category from the API
@@ -28,13 +34,11 @@ angular
       method: "GET",
       url: `http://jservice.io/api/category?id=${generateRandomCategoryNumber()}`
     }).then(response => {
-      $scope.categoryTitle = response.data.title;
-      $scope.category = response.data.clues;
-      //display 5 categories in 5 columns of 5 rows in the DOM
-      $scope.thisGameCategories.push(response.data)
+      console.log(response);
+      const cat = createCategory(response.data);
+      $scope.thisGameCategories.push(cat);
+      console.log({cat, all: $scope.thisGameCategories})
     })
-
-    console.log($scope.thisGameCategories)
   }
 
 
@@ -81,4 +85,3 @@ angular
 
 
 document.addEventListener('DOMContentLoaded', generateRandomCategoryNumber)
-
