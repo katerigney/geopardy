@@ -1,8 +1,7 @@
-
 body {
   margin: 0;
   /* max-width: 100%; */
-  font: 16px / 1 sans-serif;
+  font: 14px / 1 sans-serif;
   display: flex;
   flex-direction: column;;
   justify-content: space-around;
@@ -10,12 +9,33 @@ body {
   background-color: blue;
 }
 
+.playerDash > form {
+  display:flex;
+  flex-direction:row;
+  margin: 3em;
+  padding: 1em 1em;
+}
+
 .mainBoard {
-    max-width: 100%;
+  max-width: 80%;
   display:flex;
   flex-direction: row;
 }
 
+.catTitle {
+  color: white;
+  text-align: center;  
+}
+
+.button {
+  background-color: blue;
+  color: yellow;
+  font-size: 20pt;
+  border: 0px;
+  }
+
 .jeopardyBoardBox {
   border: .15px solid black;
+  padding: 3em;
+  text-align: center;
 }
