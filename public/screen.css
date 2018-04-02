@@ -7,6 +7,8 @@ body {
   justify-content: space-around;
   align-items: center;
   background-color: blue;
+  color: white;
+  text-align: center; 
 }
 
 .playerDash > form {
@@ -16,15 +18,15 @@ body {
   padding: 1em 1em;
 }
 
+.playerScore {
+  padding: 1em 1em;
+}
+
+
 .mainBoard {
   max-width: 80%;
   display:flex;
   flex-direction: row;
-}
-
-.catTitle {
-  color: white;
-  text-align: center;  
 }
 
 .button {

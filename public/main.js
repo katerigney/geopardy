@@ -37,7 +37,7 @@ angular
         console.log(response);
         const cat = createCategory(response.data);
         $scope.thisGameCategories.push(cat);
-        console.log({ cat, all: $scope.thisGameCategories })
+        // console.log({ cat, all: $scope.thisGameCategories })
       })
     }
 
@@ -48,7 +48,7 @@ angular
     $scope.selectedQuestion = "";
 
     $scope.getQuestion = (clue) => {
-      console.log("button was pushed")
+      // console.log("button was pushed", cat.clue.answer)
       $scope.showQuestion = true;
       $scope.selectedQuestion = clue;
       $scope.hideValue = true;
