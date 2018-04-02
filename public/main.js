@@ -39,12 +39,14 @@ angular
 
 
     //player selects a question
-    //board is hidden and selected question appears 
+    //>>>>>>>>>board is hidden and selected question appears 
     
+  $scope.selectedQuestion ="";
+
   $scope.getQuestion = (clue) => {
     console.log("button was pushed")
-    $scope.showClue=true;
-    $scope.selectedQuestion = $scope.category[];
+    $scope.showQuestion=true;
+    $scope.selectedQuestion = clue;
   }
   
   $scope.currentPlayerTotal = 0;
@@ -55,9 +57,10 @@ angular
         //if answer is correct and but they don't answer in a question, player gets question value subtracted from their total
         //if answer is wrong, player gets question value subtracted from their total
 
-
   $scope.checkAnswer = () => {
-    if ($scope.selectedQuestion.answer.replace(/(\W|\S)/g, '').toLowerCase() === $scope.playerAnswer.replace(/(\W|\S)/g, '').toLowerCase()) {
+    console.log($scope.selectedQuestion)
+    //>>>>>>>>>need to address the special character issue Tirzah was talking about?
+    if ($scope.selectedQuestion.answer === $scope.playerAnswer) {
       $scope.currentPlayerTotal += $scope.selectedQuestion.value
   } else {
       $scope.currentPlayerTotal -= $scope.selectedQuestion.value
@@ -66,11 +69,6 @@ angular
 
 
   }]);
-
-
-
-
-
 
 
   //player input functionality: 
