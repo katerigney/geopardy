@@ -46,7 +46,7 @@ angular
       $scope.showQuestion = true;
       $scope.showPlayerAnswer = true;
       $scope.selectedQuestion = clue;
-      $scope.playcount ++;
+      $scope.playcount++;
       console.log($scope.playcount)
     }
 
@@ -63,22 +63,22 @@ angular
       $scope.hideMainBoard = false;
       $scope.showQuestion = false;
 
-      // if (playcount = 25){
-      //   resetGame();
-      // }
-      
+
       //>>>>>>>>>player can no longer select questions containers they have already selected
+
+      //game is played until no more containers are available
+      //play again? button appears to reset board and pull in 5 new categories
+
+      if ($scope.playcount >= 3) {
+        $scope.hideResetButton = false;
+        location.reload();
+        //   mainBoard.empty();
+        // >>>>>>>>>can't get the current content to empty
+        //   generateRandomCategoryNumber();
+      }
     }
   }]);
 
-//game is played until no more containers are available
-//play again? button appears to reset board and pull in 5 new categories
 
-  // const resetGame = () => {
-  //   $scope.hideResetButton = false;
-  //   mainBoard.empty();
-  //>>>>>>>>>can't get the current content to empty
-  //   generateRandomCategoryNumber();
-  // }
 
 document.addEventListener('DOMContentLoaded', setGame)
