@@ -62,6 +62,7 @@ angular
       }
       $scope.hideMainBoard = false;
       $scope.showQuestion = false;
+      $scope.selectedQuestion.answered = true;
 
 
       //>>>>>>>>>player can no longer select questions containers they have already selected
@@ -71,6 +72,8 @@ angular
 
       if ($scope.playcount >= 3) {
         $scope.showResetButton = true;
+        $scope.hideMainBoard = true;
+        $scope.showPlayerAnswer = false;
       }
     }
 
