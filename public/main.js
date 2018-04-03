@@ -70,12 +70,15 @@ angular
       //play again? button appears to reset board and pull in 5 new categories
 
       if ($scope.playcount >= 3) {
-        $scope.hideResetButton = false;
-        location.reload();
-        //   mainBoard.empty();
-        // >>>>>>>>>can't get the current content to empty
-        //   generateRandomCategoryNumber();
+        $scope.showResetButton = true;
       }
+    }
+
+    $scope.resetGame = () => {
+      location.reload();
+      //   mainBoard.empty();
+      // >>>>>>>>>can't get the current content to empty
+      //   generateRandomCategoryNumber();
     }
   }]);
 
