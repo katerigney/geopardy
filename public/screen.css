@@ -41,3 +41,11 @@ body {
   padding: 3em;
   text-align: center;
 }
+
+.questionDisplay {
+  font-size: 20pt;
+}
+
+.selectedQuestion {
+  color: blue
+}

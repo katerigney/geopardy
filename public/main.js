@@ -1,11 +1,12 @@
-//generate a random number that will be between 1 and 18418 for a category id
-//, 5 times
+const setGame = () => {
+  generateRandomCategoryNumber();
+}
+
 const max = 18418;
 
 const generateRandomCategoryNumber = () => {
   let randomNum = Math.floor(Math.random() * max)
   console.log(randomNum)
-  //  thisGameCategories.push(randomNum);
   return randomNum
 }
 
@@ -15,13 +16,6 @@ const createCategory = (data) => {
     clues: data.clues.slice(0, 5)
   }
 }
-
-
-//use that random number to call a jeopardy category from the API
-//, 5 times
-
-// const BASE_URL = `http://jservice.io/api/category?id=${generateRandomCategoryNumber()}`;
-
 
 angular
   .module("jeopardyApp", [])
@@ -34,33 +28,29 @@ angular
         method: "GET",
         url: `http://jservice.io/api/category?id=${generateRandomCategoryNumber()}`
       }).then(response => {
-        console.log(response);
         const cat = createCategory(response.data);
         $scope.thisGameCategories.push(cat);
-        // console.log({ cat, all: $scope.thisGameCategories })
+        console.log({ cat })
       })
     }
 
-
-    //player selects a question
-    //>>>>>>>>>board is hidden and selected question appears 
-
     $scope.selectedQuestion = "";
 
+    $scope.playcount = 0;
+
     $scope.getQuestion = (clue) => {
-      // console.log("button was pushed", cat.clue.answer)
+      console.log("button was pushed", clue)
+      const output = document.querySelector(".questionDisplay")
+      output.textContent = clue.question;
+      $scope.hideMainBoard = true;
       $scope.showQuestion = true;
+      $scope.showPlayerAnswer = true;
       $scope.selectedQuestion = clue;
-      $scope.hideValue = true;
+      $scope.playcount ++;
+      console.log($scope.playcount)
     }
 
     $scope.currentPlayerTotal = 0;
-
-    //player can input a answer
-    //evaluate answer
-    //if answer is correct and uses a question, player gets question value added to their total
-    //if answer is correct and but they don't answer in a question, player gets question value subtracted from their total
-    //if answer is wrong, player gets question value subtracted from their total
 
     $scope.checkAnswer = () => {
       console.log($scope.selectedQuestion)
@@ -70,20 +60,25 @@ angular
       } else {
         $scope.currentPlayerTotal -= $scope.selectedQuestion.value
       }
+      $scope.hideMainBoard = false;
+      $scope.showQuestion = false;
+
+      // if (playcount = 25){
+      //   resetGame();
+      // }
+      
+      //>>>>>>>>>player can no longer select questions containers they have already selected
     }
-
-
-
   }]);
-
-
-//player input functionality: 
-
-// board displays again
-// player can no longer select questions containers they have already selected
 
 //game is played until no more containers are available
 //play again? button appears to reset board and pull in 5 new categories
 
+  // const resetGame = () => {
+  //   $scope.hideResetButton = false;
+  //   mainBoard.empty();
+  //>>>>>>>>>can't get the current content to empty
+  //   generateRandomCategoryNumber();
+  // }
 
-document.addEventListener('DOMContentLoaded', generateRandomCategoryNumber)
+document.addEventListener('DOMContentLoaded', setGame)

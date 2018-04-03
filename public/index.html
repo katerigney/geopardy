@@ -11,24 +11,27 @@
 <body ng-app="jeopardyApp" ng-controller="mainController">
   <h1>Geopardy</h1>
   <section class="playerDash">
-    <form>
+    <p class="playerScore">Player Score = ${{currentPlayerTotal}}</p>
+    <form ng-show="showPlayerAnswer">
       <input type="text" ng-model="playerAnswer">
       <button type="button" ng-click="checkAnswer()">Answer</button>
-      <p class="playerScore">Player Score = ${{currentPlayerTotal}}</p>
     </form>
+    
+    <!-- hidden until came is over -->
+    <!-- <button type="button" ng-hide="HideResetButton" ng-click="resetGame()">Reset Board</button> -->
+
   </section>
 
-  <section class="mainBoard">
+  <section class="mainBoard" ng-hide="hideMainBoard">
     <section class="catColumn" ng-repeat="cat in thisGameCategories track by $index" ng-include="'./templates/categoryColumn.html'">
 
     </section>
   </section>
 
   <!-- QUESTION -->
-  <section>
-
+  <section class="questionDisplay" ng-show="showQuestion">
+    <h1>{{clue.question}}</h1>
   </section>
-
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="./main.js" charset="utf-8"></script>

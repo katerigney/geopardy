@@ -4,7 +4,5 @@
 
 
 <section class="jeopardyBoardBox" ng-repeat="clue in cat.clues track by $index">
-    <button ng-hide="hideValue" class="button" ng-click="getQuestion(cat.clues[$index])">{{clue.value}}</button>
-    <h3 ng-show="showQuestion">{{clue.question}}</h3>
+    <button class="button" ng-click="getQuestion(clue)">{{clue.value}}</button>
 </section>
-
