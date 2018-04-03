@@ -79,21 +79,21 @@ angular
     }
 
     $scope.resetGame = () => {
-      // location.reload();
-      $scope.thisGameCategories = [];
-      // >>>>>>>>>can't get the current content to empty
-      //------WHAT TO CALL?
-      for (let i = 0; i < 5; i++) {
-        $http({
-          method: "GET",
-          url: `http://jservice.io/api/category?id=${generateRandomCategoryNumber()}`
-        }).then(response => {
-          const cat = createCategory(response.data);
-          $scope.thisGameCategories.push(cat);
-          //>>>>>>>throwing error that this is not a function
-          console.log({ cat })
-          console.log (thisGameCategories)
-        })
+      location.reload();
+      // $scope.thisGameCategories = [];
+      // // >>>>>>>>>can't get the current content to empty
+      // //------WHAT TO CALL?
+      // for (let i = 0; i < 5; i++) {
+      //   $http({
+      //     method: "GET",
+      //     url: `http://jservice.io/api/category?id=${generateRandomCategoryNumber()}`
+      //   }).then(response => {
+      //     const cat = createCategory(response.data);
+      //     $scope.thisGameCategories.push(cat);
+      //     //>>>>>>>throwing error that this is not a function
+      //     console.log({ cat })
+      //     console.log (thisGameCategories)
+      //   })
       }
     }
   }]);
