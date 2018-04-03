@@ -18,11 +18,11 @@
     </form>
     
     <!-- hidden until game is over -->
-    <button type="button" ng-show="showResetButton" ng-click="resetGame()">Reset Board</button>
+    <button type="button" ng-show="showResetButton" ng-click="resetGame()">Play Again?</button>
 
   </section>
 
-  <section class="mainBoard" ng-hide="hideMainBoard">
+  <section ng-class="mainBoard" class="mainBoard" ng-hide="hideMainBoard">
     <section class="catColumn" ng-repeat="cat in thisGameCategories track by $index" ng-include="'./templates/categoryColumn.html'">
 
     </section>

@@ -47,8 +47,9 @@ angular
       $scope.showPlayerAnswer = true;
       $scope.selectedQuestion = clue;
       $scope.playcount++;
-      console.log($scope.playcount)
+      console.log($scope.playcount);
     }
+
 
     $scope.currentPlayerTotal = 0;
 
@@ -63,25 +64,25 @@ angular
       $scope.hideMainBoard = false;
       $scope.showQuestion = false;
       $scope.selectedQuestion.answered = true;
+      $scope.clearAnswer();
 
-
-      //>>>>>>>>>player can no longer select questions containers they have already selected
-
-      //game is played until no more containers are available
-      //play again? button appears to reset board and pull in 5 new categories
-
+      //using 3 play counts for testing purposes, should be 25 total.
       if ($scope.playcount >= 3) {
         $scope.showResetButton = true;
         $scope.hideMainBoard = true;
         $scope.showPlayerAnswer = false;
       }
     }
+    //play again? button appears to reset board and pull in 5 new categories
+    $scope.clearAnswer = () => {
+      $scope.playerAnswer = "";
+    }
 
     $scope.resetGame = () => {
       location.reload();
-      //   mainBoard.empty();
+      // $scope.thisGameCategories={};
       // >>>>>>>>>can't get the current content to empty
-      //   generateRandomCategoryNumber();
+       //------WHAT TO CALL? generateRandomCategoryNumber();
     }
   }]);
 
